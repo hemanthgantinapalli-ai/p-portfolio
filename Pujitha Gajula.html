@@ -1,0 +1,840 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Pujitha Gajula</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: a bright, playful single-page portfolio. Floating glass nav, animated colour blobs, hero with an orbiting skill badges avatar,
+   skill marquee, card grids with cursor spotlight and tilt, animated education bars, and a gradient contact card. */
+:root {
+  --bg: #FAF7FF;
+  --ink: #1A1535;
+  --muted: #5B5578;
+  --card: rgba(255, 255, 255, .72);
+  --card-solid: #FFFFFF;
+  --line: rgba(91, 60, 200, .16);
+  --accent: #6D28D9;
+  --c1: #7C3AED;
+  --c2: #EC4899;
+  --c3: #F59E0B;
+  --c4: #0891B2;
+  --c5: #059669;
+  --g-loop: linear-gradient(90deg, #7C3AED, #EC4899, #F97316, #EC4899, #7C3AED);
+  --g: linear-gradient(120deg, #7C3AED, #EC4899 55%, #F97316);
+  --btn-a: #6D28D9;
+  --btn-b: #DB2777;
+  --shadow: 0 14px 34px -16px rgba(91, 60, 200, .38);
+  --blob-op: .5;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A0918; --ink: #F2EFFF; --muted: #ABA5CB; --card: rgba(255, 255, 255, .06); --card-solid: #16132E;
+    --line: rgba(255, 255, 255, .13); --accent: #C4B5FD; --c1: #A78BFA; --c2: #F472B6; --c3: #FBBF24; --c4: #22D3EE; --c5: #34D399;
+    --g-loop: linear-gradient(90deg, #A78BFA, #F472B6, #FBBF24, #F472B6, #A78BFA);
+    --g: linear-gradient(120deg, #A78BFA, #F472B6 55%, #FBBF24);
+    --shadow: 0 16px 40px -18px rgba(0, 0, 0, .8); --blob-op: .32; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A0918; --ink: #F2EFFF; --muted: #ABA5CB; --card: rgba(255, 255, 255, .06); --card-solid: #16132E;
+  --line: rgba(255, 255, 255, .13); --accent: #C4B5FD; --c1: #A78BFA; --c2: #F472B6; --c3: #FBBF24; --c4: #22D3EE; --c5: #34D399;
+  --g-loop: linear-gradient(90deg, #A78BFA, #F472B6, #FBBF24, #F472B6, #A78BFA);
+  --g: linear-gradient(120deg, #A78BFA, #F472B6 55%, #FBBF24);
+  --shadow: 0 16px 40px -18px rgba(0, 0, 0, .8); --blob-op: .32; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 45; background: var(--bg);
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--c2); outline-offset: 3px; border-radius: 6px; }
+
+.wrap {
+  max-width: 1160px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* animated background */
+.bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.blob { position: absolute; width: 46vmax; height: 46vmax; border-radius: 50%; filter: blur(70px); opacity: var(--blob-op); animation: drift 22s ease-in-out infinite alternate; }
+.blob.b1 { background: radial-gradient(circle at 30% 30%, var(--c1), transparent 65%); top: -14vmax; left: -12vmax; }
+.blob.b2 { background: radial-gradient(circle at 50% 50%, var(--c2), transparent 65%); top: 18vh; right: -18vmax; animation-duration: 26s; animation-delay: -6s; }
+.blob.b3 { background: radial-gradient(circle at 50% 50%, var(--c4), transparent 65%); bottom: -20vmax; left: 12vw; animation-duration: 30s; animation-delay: -12s; }
+@keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(6vmax, 4vmax) scale(1.15); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { from { opacity: .3; transform: scale(.94); } to { opacity: .6; transform: scale(1.06); } }
+@keyframes shine { to { background-position: 200% 0; } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes ping { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.6); opacity: 0; } }
+@keyframes scroll { to { transform: translateX(-50%); } }
+@keyframes shift { to { background-position: 100% 0; } }
+@keyframes floaty { from { transform: translateY(0) rotate(0); } to { transform: translateY(-18px) rotate(8deg); } }
+
+/* progress */
+#prog { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 3px; z-index: 60; background: var(--g); transform-origin: left; transform: scaleX(0); }
+
+/* nav */
+.site { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 10px); z-index: 50; margin-top: 10px; }
+.pill {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .35rem 1rem;
+  padding: .5rem .55rem .5rem 1rem; border-radius: 22px;
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+}
+.brand { display: inline-flex; align-items: center; gap: .6rem; margin-right: auto; text-decoration: none; font: 800 1.05rem/1 var(--font-display); }
+.logo { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--g); color: #fff; font: 800 .8rem/1 var(--font-display); }
+.links { display: flex; gap: .2rem; overflow-x: auto; min-width: 0; order: 3; width: 100%; scrollbar-width: none; }
+.links::-webkit-scrollbar { display: none; }
+.links a { text-decoration: none; white-space: nowrap; font: 500 .85rem/1 var(--font-body); color: var(--muted); padding: .55rem .8rem; border-radius: 999px; transition: color .2s, background .2s; }
+.links a:hover { color: var(--ink); }
+.links a[aria-current="true"] { color: var(--ink); background: color-mix(in srgb, var(--c1) 16%, transparent); }
+.toggle {
+  display: inline-flex; align-items: center; gap: .45rem; cursor: pointer; color: var(--ink); background: transparent;
+  font: 500 .8rem/1 var(--font-body); border: 1px solid var(--line); border-radius: 999px; padding: .55rem .85rem;
+  transition: border-color .2s, transform .2s;
+}
+.toggle:hover { border-color: var(--c2); transform: translateY(-1px); }
+@media (min-width: 900px) {
+  .pill { flex-wrap: nowrap; }
+  .links { order: 0; width: auto; }
+  .brand { margin-right: 0; }
+  .links { margin-left: auto; }
+}
+
+/* hero */
+.hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) 1rem; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); } }
+.status {
+  display: inline-flex; align-items: center; gap: .6rem; padding: .45rem .9rem .45rem .7rem; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line); font: 500 .85rem/1 var(--font-body);
+}
+.dot { position: relative; width: 9px; height: 9px; border-radius: 50%; background: var(--c5); }
+.dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--c5); animation: ping 2s ease-out infinite; }
+h1 { margin: 1.1rem 0 0; font: 800 clamp(2.7rem, 8.5vw, 5.6rem)/.98 var(--font-display); letter-spacing: -.035em; text-wrap: balance; }
+.gt {
+  background: var(--g-loop); background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent; animation: shine 6s linear infinite;
+}
+.roleline { margin: 1.25rem 0 0; font: 500 clamp(1.1rem, 2.6vw, 1.5rem)/1.4 var(--font-display); color: var(--muted); }
+.roleline b { font-weight: 800; color: var(--ink); }
+.caret { display: inline-block; width: 3px; height: 1.1em; margin-left: 3px; vertical-align: text-bottom; background: var(--c2); animation: blink 1s steps(2) infinite; }
+.lede { max-width: 34rem; margin: 1.1rem 0 0; color: var(--muted); }
+.cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.75rem; }
+.btn {
+  position: relative; display: inline-block; text-decoration: none; font: 700 .95rem/1 var(--font-body);
+  padding: .95rem 1.4rem; border-radius: 14px; border: 1px solid var(--line); background: var(--card);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.btn:hover { transform: translateY(-3px); border-color: var(--c2); }
+.btn.primary { border: 0; color: #fff; background: linear-gradient(120deg, var(--btn-a), var(--btn-b)); box-shadow: 0 14px 28px -12px var(--btn-b); }
+.btn.primary:hover { box-shadow: 0 18px 34px -12px var(--btn-b); }
+
+/* avatar stage */
+.stage { --s: clamp(250px, 76vw, 380px); position: relative; width: var(--s); height: var(--s); margin-inline: auto; }
+.glow { position: absolute; inset: 14%; border-radius: 50%; background: var(--g); filter: blur(42px); animation: pulse 5s ease-in-out infinite alternate; }
+.ring { position: absolute; inset: 20%; border-radius: 50%; background: conic-gradient(from 0deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c1)); animation: spin 7s linear infinite; }
+.face { position: absolute; inset: calc(20% + 7px); border-radius: 50%; background: var(--card-solid); display: grid; place-items: center; }
+.face b { font: 800 calc(var(--s) * .2)/1 var(--font-display); letter-spacing: -.04em; background: var(--g); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.path { position: absolute; inset: 4%; border-radius: 50%; border: 1px dashed var(--line); }
+.orbit { position: absolute; inset: 0; animation: spin 28s linear infinite; }
+.stage:hover .orbit, .stage:hover .ob i { animation-play-state: paused; }
+.ob { position: absolute; top: 50%; left: 50%; width: 50px; height: 50px; margin: -25px 0 0 -25px; transform: rotate(var(--a)) translateX(calc(var(--s) * .46)) rotate(calc(var(--a) * -1)); }
+.ob i {
+  display: grid; place-items: center; width: 100%; height: 100%; border-radius: 16px; font: 700 .72rem/1 var(--font-mono); font-style: normal;
+  background: var(--b); color: var(--t, #fff); box-shadow: 0 12px 22px -8px var(--b); animation: spin 28s linear infinite reverse;
+}
+
+/* marquee */
+.marquee { margin-top: 2.5rem; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.mtrack { display: flex; gap: .75rem; width: max-content; animation: scroll 34s linear infinite; }
+.marquee:hover .mtrack { animation-play-state: paused; }
+.mq { display: inline-flex; align-items: center; gap: .6rem; white-space: nowrap; padding: .6rem 1.05rem; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font: 500 .85rem/1 var(--font-mono); }
+.mq::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--h, var(--c1)); }
+.mq:nth-child(5n+1) { --h: var(--c1); } .mq:nth-child(5n+2) { --h: var(--c2); } .mq:nth-child(5n+3) { --h: var(--c3); }
+.mq:nth-child(5n+4) { --h: var(--c4); } .mq:nth-child(5n) { --h: var(--c5); }
+
+/* sections */
+.sec { padding-block: clamp(3rem, 7vw, 5.5rem); scroll-margin-top: 6.5rem; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem; font: 700 .75rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent); padding: .45rem .8rem; border-radius: 999px; background: color-mix(in srgb, var(--c1) 13%, transparent);
+}
+.eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--g); }
+h2 { margin: 1rem 0 0; font: 800 clamp(2rem, 5vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -.03em; text-wrap: balance; max-width: 22ch; }
+.grad { background: var(--g); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+h3 { margin: 0; font: 800 1.35rem/1.2 var(--font-display); letter-spacing: -.01em; }
+.sec-body { margin-top: clamp(1.75rem, 4vw, 2.75rem); }
+p { margin: 0; }
+
+/* cards */
+.card {
+  position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); overflow: hidden;
+}
+.card::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--h, var(--c1)) 26%, transparent), transparent 65%);
+}
+.card:hover::before { opacity: 1; }
+.card > * { position: relative; }
+.tilt { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)); }
+.tilt:hover { --ty: -5px; }
+.rv { transition: opacity .8s ease var(--d, 0s), translate .8s cubic-bezier(.2, .8, .2, 1) var(--d, 0s); }
+.rv.tilt { transition: opacity .8s ease var(--d, 0s), translate .8s cubic-bezier(.2, .8, .2, 1) var(--d, 0s), transform .25s ease, box-shadow .25s ease; }
+.rv.pre { opacity: .2; translate: 0 28px; }
+
+.ico {
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 15px; color: #fff;
+  background: linear-gradient(135deg, var(--h, var(--c1)), var(--h2, var(--c2))); box-shadow: 0 10px 20px -10px var(--h, var(--c1));
+}
+.ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 0; padding: 0; }
+.chip {
+  --h: var(--c1);
+  font: 500 .9rem/1 var(--font-body); padding: .55rem .8rem; border-radius: 12px; color: var(--ink);
+  background: color-mix(in srgb, var(--h) 14%, transparent); border: 1px solid color-mix(in srgb, var(--h) 38%, transparent);
+  transition: transform .2s, background .2s;
+}
+.chip:hover { transform: translateY(-2px) rotate(-1.5deg); background: color-mix(in srgb, var(--h) 26%, transparent); }
+.card .chip { --h: inherit; }
+.chip em {
+  font: 700 .65rem/1 var(--font-mono); font-style: normal; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--c2); color: #fff; padding: .25rem .4rem; border-radius: 6px; margin-left: .45rem;
+}
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
+@media (min-width: 960px) { .about { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; } }
+.about p + p { margin-top: 1rem; }
+.about .txt { color: var(--muted); max-width: 38rem; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .8rem; margin: 1.75rem 0 0; }
+.fact { padding: 1rem 1.1rem; }
+.fact dt { display: flex; align-items: center; gap: .5rem; font: 700 .7rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.fact dt::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--h); }
+.fact dd { margin: .55rem 0 0; font-weight: 500; line-height: 1.4; }
+
+.plotcard { padding: 1.1rem 1.1rem 1rem; }
+.plotcard h3 { font-size: 1.1rem; }
+.plotcard .sub { margin: .25rem 0 .5rem; color: var(--muted); font-size: .9rem; }
+.plotcard canvas { display: block; width: 100%; height: 240px; touch-action: pan-y; cursor: crosshair; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; margin-top: .5rem; }
+.ctl { display: flex; align-items: center; gap: .6rem; flex: 1 1 150px; min-width: 0; font: 700 .85rem/1 var(--font-mono); }
+.ctl input[type="range"] { flex: 1; min-width: 0; accent-color: var(--c2); }
+.readout { font: 700 .8rem/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--accent); }
+.reset { font: 500 .8rem/1 var(--font-body); color: var(--ink); background: transparent; cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: .5rem .85rem; }
+.reset:hover { border-color: var(--c2); }
+.plotcard .cap { margin-top: .8rem; font: 400 .75rem/1.5 var(--font-mono); color: var(--muted); }
+
+/* skills */
+.skills { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+@media (min-width: 560px) { .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } .skills .card:last-child { grid-column: 1 / -1; } }
+@media (min-width: 900px) {
+  .skills { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .skills .card { grid-column: span 2; }
+  .skills .card:nth-child(n+4) { grid-column: span 3; }
+}
+.skills .card { padding: 1.4rem; display: grid; gap: 1.1rem; align-content: start; }
+.skills .card h3 { margin-top: .1rem; }
+.skills .top { display: flex; align-items: center; gap: .9rem; }
+
+/* education */
+.tl { position: relative; display: grid; gap: 1.1rem; padding-left: 2.1rem; max-width: 52rem; }
+.tl::before { content: ""; position: absolute; left: .6rem; top: .6rem; bottom: .6rem; width: 3px; border-radius: 3px; background: linear-gradient(var(--c1), var(--c2), var(--c3)); }
+.edu { padding: 1.3rem 1.4rem; }
+.edu::after { content: ""; position: absolute; left: -2.05rem; top: 1.55rem; width: 15px; height: 15px; border-radius: 50%; background: var(--card-solid); border: 4px solid var(--h); box-shadow: 0 0 0 5px color-mix(in srgb, var(--h) 20%, transparent); }
+.edu-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .3rem 1rem; }
+.edu h3 { font-size: 1.2rem; }
+.edu .where { color: var(--muted); font-size: .95rem; margin-top: .2rem; }
+.year { font: 700 .72rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: .4rem .6rem; border-radius: 8px; color: var(--ink); background: color-mix(in srgb, var(--h) 18%, transparent); white-space: nowrap; }
+.score { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+.num { font: 800 1.9rem/1 var(--font-display); letter-spacing: -.03em; min-width: 5.2ch; font-variant-numeric: tabular-nums; color: var(--ink); }
+.scale { flex: 1; min-width: 0; }
+.bartrack { height: 12px; border-radius: 99px; overflow: hidden; background: color-mix(in srgb, var(--h) 16%, transparent); }
+.barfill { height: 100%; width: calc(var(--v) * 1%); border-radius: inherit; background: linear-gradient(90deg, var(--h), var(--h2)); transition: width 1.4s cubic-bezier(.2, .8, .2, 1); }
+.barfill.pre { width: 0; }
+.ends { display: flex; justify-content: space-between; margin-top: .35rem; font: 400 .68rem/1 var(--font-mono); color: var(--muted); }
+
+/* project */
+.feature {
+  border: 1px solid transparent; border-radius: 28px; padding: clamp(1.4rem, 4vw, 2.5rem); box-shadow: var(--shadow);
+  background: linear-gradient(var(--card-solid), var(--card-solid)) padding-box, var(--g-loop) border-box; background-size: 100% 100%, 200% auto;
+}
+.feature .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .8rem 1.5rem; }
+.feature .head p { color: var(--muted); margin-top: .4rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 1.25rem 0 0; padding: 0; }
+.tags li { font: 700 .72rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: .45rem .7rem; border-radius: 999px; color: var(--ink); background: color-mix(in srgb, var(--h) 16%, transparent); border: 1px solid color-mix(in srgb, var(--h) 40%, transparent); }
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+.pillar { padding: 1.3rem; display: grid; gap: .8rem; align-content: start; }
+.pillar h4 { margin: 0; font: 800 1.1rem/1.2 var(--font-display); }
+.pillar p { color: var(--muted); font-size: .96rem; }
+
+/* certifications */
+.certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.cert { padding: 1.4rem; display: grid; gap: 1rem; align-content: start; }
+.cert b { font: 800 1.05rem/1.25 var(--font-display); letter-spacing: -.01em; }
+.cert span { display: block; margin-top: .4rem; font: 500 .75rem/1 var(--font-mono); letter-spacing: .04em; color: var(--muted); }
+
+/* strengths */
+.how { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+@media (min-width: 760px) { .how { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3rem; } }
+.how h3 { font-size: 1rem; margin-bottom: 1rem; font-family: var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.how .chip { font-size: 1rem; padding: .7rem 1rem; }
+.how .chips li:nth-child(5n+1) { --h: var(--c1); } .how .chips li:nth-child(5n+2) { --h: var(--c2); } .how .chips li:nth-child(5n+3) { --h: var(--c3); }
+.how .chips li:nth-child(5n+4) { --h: var(--c4); } .how .chips li:nth-child(5n) { --h: var(--c5); }
+
+/* contact */
+.contact {
+  position: relative; overflow: hidden; border-radius: 30px; color: #fff; padding: clamp(1.6rem, 6vw, 4rem);
+  background: linear-gradient(120deg, #5B21B6, #BE185D, #C2410C, #BE185D, #5B21B6); background-size: 300% 100%; animation: shift 16s ease-in-out infinite alternate;
+  box-shadow: 0 30px 60px -28px #BE185D;
+}
+.contact::before, .contact::after { content: ""; position: absolute; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .22); pointer-events: none; animation: floaty 7s ease-in-out infinite alternate; }
+.contact::before { width: 260px; height: 260px; right: -70px; top: -80px; }
+.contact::after { width: 160px; height: 160px; right: 18%; bottom: -70px; animation-duration: 9s; }
+.contact > * { position: relative; }
+.contact .eyebrow { color: #fff; background: rgba(255, 255, 255, .18); }
+.contact .eyebrow::before { background: #fff; }
+.contact h2 { color: #fff; max-width: 16ch; }
+.contact p { margin-top: 1rem; max-width: 34rem; color: rgba(255, 255, 255, .92); }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1rem; margin-top: 1.75rem; }
+.mail .val { font: 700 clamp(1rem, 3.4vw, 1.5rem)/1.3 var(--font-mono); overflow-wrap: anywhere; user-select: all; padding: .85rem 1.1rem; border-radius: 16px; background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .3); min-width: 0; }
+.copy { cursor: pointer; font: 700 .9rem/1 var(--font-body); color: #3B0764; background: #fff; border: 0; border-radius: 14px; padding: 1rem 1.3rem; min-width: 6.2rem; transition: transform .2s, box-shadow .2s; }
+.copy:hover { transform: translateY(-3px); box-shadow: 0 14px 24px -12px rgba(0, 0, 0, .5); }
+.loc { margin-top: 1.4rem; font: 500 .85rem/1.4 var(--font-mono); color: rgba(255, 255, 255, .9); }
+
+footer { padding-block: 2rem 3rem; }
+footer p { text-align: left; font: 400 .8rem/1.5 var(--font-mono); color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .mtrack { flex-wrap: wrap; width: auto; }
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+}
+</style>
+
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div id="prog" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="pill">
+      <a class="brand" href="#top"><span class="logo">PG</span><span>Pujitha Gajula</span></a>
+      <nav class="links" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#project">Project</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="toggle" id="themeToggle" type="button" aria-label="Switch color theme">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 1a6 6 0 0 1 0 12z" fill="currentColor"/></svg>
+        <span id="themeLabel">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap hero" aria-labelledby="name">
+    <div class="hero-grid">
+      <div>
+        <span class="status"><span class="dot"></span>Open to entry-level roles</span>
+        <h1 id="name">Hi, I'm <span class="gt">Pujitha Gajula</span></h1>
+        <p class="roleline">Computer Science &amp; Statistics student, aiming to be a <b><span id="role">Software Developer</span></b><span class="caret" aria-hidden="true"></span></p>
+        <p class="lede">I have a solid base in programming, databases and problem solving. I want to apply what I know, keep learning new technologies and contribute to a team as a Software Developer or Data Analyst.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn" href="#skills">See my skills</a>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="glow"></div>
+        <div class="path"></div>
+        <div class="ring"></div>
+        <div class="face"><b>PG</b></div>
+        <div class="orbit">
+          <span class="ob" style="--a:0deg;--b:#E8541E"><i>HTML</i></span>
+          <span class="ob" style="--a:60deg;--b:#1D74D6"><i>CSS</i></span>
+          <span class="ob" style="--a:120deg;--b:#F7C600;--t:#2A2200"><i>JS</i></span>
+          <span class="ob" style="--a:180deg;--b:#0E8AA6"><i>SQL</i></span>
+          <span class="ob" style="--a:240deg;--b:#2F9E6B"><i>PY</i></span>
+          <span class="ob" style="--a:300deg;--b:#7C3AED"><i>C++</i></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee" aria-label="Skills">
+      <div class="mtrack" id="mtrack">
+        <span class="mq">C</span><span class="mq">C++</span><span class="mq">Python</span><span class="mq">JavaScript</span><span class="mq">HTML</span><span class="mq">CSS</span>
+        <span class="mq">PHP</span><span class="mq">SQL</span><span class="mq">PL/SQL</span><span class="mq">Microsoft Excel</span><span class="mq">Microsoft Word</span>
+        <span class="mq">Data Structures</span><span class="mq">Operating Systems</span><span class="mq">Data Communication &amp; Networks</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <span class="eyebrow">About</span>
+      <h2 id="about-h">Code and statistics, <span class="grad">side by side</span></h2>
+      <div class="sec-body about">
+        <div>
+          <div class="txt rv">
+            <p>I am a motivated, detail-oriented Computer Science and Statistics student. I like turning a messy problem into clear steps, whether the answer is a program or a table of numbers.</p>
+            <p>I am looking for an entry-level Software Developer or Data Analyst role where I can apply my technical knowledge and keep growing.</p>
+          </div>
+          <dl class="facts">
+            <div class="card fact rv tilt" style="--h:var(--c1);--d:.05s"><dt>Degree</dt><dd>B.Sc. Computer Science and Statistics, expected 2027</dd></div>
+            <div class="card fact rv tilt" style="--h:var(--c2);--d:.1s"><dt>College</dt><dd>ASN Degree College, Acharya Nagarjuna University</dd></div>
+            <div class="card fact rv tilt" style="--h:var(--c3);--d:.15s"><dt>Open to</dt><dd>Software Developer or Data Analyst, entry level</dd></div>
+            <div class="card fact rv tilt" style="--h:var(--c4);--d:.2s"><dt>Languages</dt><dd>English, Telugu, Hindi</dd></div>
+            <div class="card fact rv tilt" style="--h:var(--c5);--d:.25s"><dt>Based in</dt><dd>Tenali, Guntur, Andhra Pradesh</dd></div>
+          </dl>
+        </div>
+        <div class="card plotcard rv" style="--h:var(--c2)">
+          <h3>Play with a distribution</h3>
+          <p class="sub">Statistics is half my degree. Move your pointer over the plot to change the mean and spread.</p>
+          <canvas id="plot" role="img" aria-label="A normal distribution curve. The shaded area marks one standard deviation either side of the mean. Use the sliders to change the mean and standard deviation."></canvas>
+          <div class="controls">
+            <label class="ctl" for="muRange"><span>&mu;</span><input id="muRange" type="range" min="-2" max="2" step="0.05" value="0"></label>
+            <label class="ctl" for="sigmaRange"><span>&sigma;</span><input id="sigmaRange" type="range" min="0.6" max="1.5" step="0.05" value="1"></label>
+            <span class="readout" id="readout">&mu; = 0.00 &nbsp; &sigma; = 1.00</span>
+            <button class="reset" id="resetPlot" type="button">Reset</button>
+          </div>
+          <p class="cap">The shaded band is &mu; &plusmn; &sigma;, about 68.3% of the total area.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <span class="eyebrow">Skills</span>
+      <h2 id="skills-h">Tools I <span class="grad">work with</span></h2>
+      <div class="sec-body skills">
+        <div class="card rv tilt" style="--h:var(--c1);--h2:var(--c2)">
+          <div class="top"><span class="ico"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><h3>Programming</h3></div>
+          <ul class="chips"><li class="chip">C</li><li class="chip">C++</li><li class="chip">Python</li><li class="chip">JavaScript</li></ul>
+        </div>
+        <div class="card rv tilt" style="--h:var(--c4);--h2:var(--c1);--d:.08s">
+          <div class="top"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><h3>Web</h3></div>
+          <ul class="chips"><li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">JavaScript</li><li class="chip">PHP<em>learning</em></li></ul>
+        </div>
+        <div class="card rv tilt" style="--h:var(--c5);--h2:var(--c4);--d:.16s">
+          <div class="top"><span class="ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><h3>Databases</h3></div>
+          <ul class="chips"><li class="chip">SQL</li><li class="chip">PL/SQL</li></ul>
+        </div>
+        <div class="card rv tilt" style="--h:var(--c3);--h2:var(--c2);--d:.08s">
+          <div class="top"><span class="ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><h3>Tools</h3></div>
+          <ul class="chips"><li class="chip">Microsoft Excel</li><li class="chip">Microsoft Word</li></ul>
+        </div>
+        <div class="card rv tilt" style="--h:var(--c2);--h2:var(--c1);--d:.16s">
+          <div class="top"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><h3>Core subjects</h3></div>
+          <ul class="chips"><li class="chip">Data Structures</li><li class="chip">Operating Systems</li><li class="chip">Data Communication &amp; Networks</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="education" aria-labelledby="edu-h">
+    <div class="wrap">
+      <span class="eyebrow">Education</span>
+      <h2 id="edu-h">My <span class="grad">education</span> so far</h2>
+      <div class="sec-body tl">
+        <article class="card edu rv" style="--h:var(--c1);--h2:var(--c2)">
+          <div class="edu-top"><div><h3>Bachelor of Computer Science and Statistics</h3><p class="where">ASN Degree College, Acharya Nagarjuna University</p></div><span class="year">Expected 2027</span></div>
+          <div class="score"><span class="num"><span class="count" data-to="85" data-dec="0">85</span>%</span><div class="scale"><div class="bartrack"><div class="barfill" style="--v:85"></div></div><div class="ends"><span>0</span><span>100</span></div></div></div>
+        </article>
+        <article class="card edu rv" style="--h:var(--c4);--h2:var(--c5);--d:.08s">
+          <div class="edu-top"><div><h3>Intermediate</h3><p class="where">Vivekananda Junior College</p></div><span class="year">2023</span></div>
+          <div class="score"><span class="num"><span class="count" data-to="60" data-dec="0">60</span>%</span><div class="scale"><div class="bartrack"><div class="barfill" style="--v:60"></div></div><div class="ends"><span>0</span><span>100</span></div></div></div>
+        </article>
+        <article class="card edu rv" style="--h:var(--c3);--h2:var(--c2);--d:.16s">
+          <div class="edu-top"><div><h3>SSC</h3><p class="where">Kerala English Medium School</p></div><span class="year">2021</span></div>
+          <div class="score"><span class="num"><span class="count" data-to="94.33" data-dec="2">94.33</span>%</span><div class="scale"><div class="bartrack"><div class="barfill" style="--v:94.33"></div></div><div class="ends"><span>0</span><span>100</span></div></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="project" aria-labelledby="proj-h">
+    <div class="wrap">
+      <span class="eyebrow">Project</span>
+      <h2 id="proj-h">Community Service <span class="grad">Project</span></h2>
+      <div class="sec-body">
+        <div class="feature rv">
+          <div class="head">
+            <div>
+              <h3>CSP</h3>
+              <p>I led the planning and coordination of community awareness activities.</p>
+            </div>
+          </div>
+          <ul class="tags">
+            <li style="--h:var(--c1)">Leadership</li><li style="--h:var(--c2)">Planning</li><li style="--h:var(--c4)">Team coordination</li><li style="--h:var(--c5)">Community awareness</li>
+          </ul>
+          <div class="pillars">
+            <div class="card pillar rv tilt" style="--h:var(--c5);--h2:var(--c4)">
+              <span class="ico"><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+              <h4>Environment</h4>
+              <p>Promoted environmental sustainability by encouraging people to use less plastic.</p>
+            </div>
+            <div class="card pillar rv tilt" style="--h:var(--c2);--h2:var(--c1);--d:.08s">
+              <span class="ico"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
+              <h4>Public health</h4>
+              <p>Ran awareness sessions on the harmful effects of narcotic substances, and worked with healthcare professionals to teach healthy lifestyle practices.</p>
+            </div>
+            <div class="card pillar rv tilt" style="--h:var(--c3);--h2:var(--c2);--d:.16s">
+              <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+              <h4>Delivery</h4>
+              <p>Managed the project timeline and coordinated the team so the activities ran as planned.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="certifications" aria-labelledby="cert-h">
+    <div class="wrap">
+      <span class="eyebrow">Certifications</span>
+      <h2 id="cert-h">Always <span class="grad">learning</span></h2>
+      <!-- TODO: link each card to its Credly badge once you have the URLs. -->
+      <div class="sec-body certs">
+        <div class="card cert rv tilt" style="--h:var(--c1);--h2:var(--c2)"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div><b>Artificial Intelligence Fundamentals</b><span>IBM SkillsBuild</span></div></div>
+        <div class="card cert rv tilt" style="--h:var(--c4);--h2:var(--c1);--d:.07s"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div><b>Career Management Essentials</b><span>IBM SkillsBuild</span></div></div>
+        <div class="card cert rv tilt" style="--h:var(--c2);--h2:var(--c3);--d:.14s"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div><b>Craft Precise Prompts for AI Models</b><span>IBM SkillsBuild</span></div></div>
+        <div class="card cert rv tilt" style="--h:var(--c5);--h2:var(--c4);--d:.21s"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div><b>Project Management Fundamentals</b><span>IBM SkillsBuild</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="strengths" aria-labelledby="str-h">
+    <div class="wrap">
+      <span class="eyebrow">Strengths</span>
+      <h2 id="str-h">How I <span class="grad">work</span></h2>
+      <div class="sec-body how">
+        <div class="rv">
+          <h3>Strengths</h3>
+          <ul class="chips">
+            <li class="chip">Problem solving</li><li class="chip">Excellent communication</li><li class="chip">Teamwork &amp; leadership</li>
+            <li class="chip">Adaptability</li><li class="chip">Quick learner</li><li class="chip">Time management</li><li class="chip">Strong work ethic</li>
+          </ul>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <h3>Languages</h3>
+          <ul class="chips"><li class="chip">English</li><li class="chip">Telugu</li><li class="chip">Hindi</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact rv">
+        <span class="eyebrow">Contact</span>
+        <h2 id="contact-h">Let's build something together</h2>
+        <p>I am open to entry-level Software Developer and Data Analyst roles. The best way to reach me is by email.</p>
+        <!-- TODO: add a LinkedIn link here once you have the profile URL. -->
+        <div class="mail">
+          <span class="val" id="c-email">pujithagajula71@gmail.com</span>
+          <button class="copy" type="button" data-copy="c-email">Copy email</button>
+        </div>
+        <p class="loc">Tenali, Guntur, Andhra Pradesh</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><p>&copy; 2026 Pujitha Gajula &middot; Built with HTML, CSS and JavaScript</p></div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  /* theme toggle */
+  var toggle = document.getElementById('themeToggle');
+  var tlabel = document.getElementById('themeLabel');
+  function effective() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  function syncToggle() {
+    var next = effective() === 'dark' ? 'light' : 'dark';
+    tlabel.textContent = next === 'dark' ? 'Dark' : 'Light';
+    toggle.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+  }
+  try { var saved = localStorage.getItem('pg-theme'); if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved); } catch (e) {}
+  toggle.addEventListener('click', function () {
+    var next = effective() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('pg-theme', next); } catch (e) {}
+    syncToggle();
+  });
+  syncToggle();
+
+  /* scroll progress */
+  var prog = document.getElementById('prog');
+  function onScroll() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    prog.style.transform = 'scaleX(' + p + ')';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* typed roles */
+  var roles = ['Software Developer', 'Data Analyst', 'Problem Solver', 'Quick Learner'];
+  var roleEl = document.getElementById('role');
+  if (!reduce) {
+    var ri = 0, rj = roles[0].length, del = true;
+    var step = function () {
+      var word = roles[ri];
+      var delay = del ? 45 : 85;
+      if (!del) {
+        rj++; roleEl.textContent = word.slice(0, rj);
+        if (rj === word.length) { del = true; delay = 1600; }
+      } else {
+        if (rj > 0) { rj--; roleEl.textContent = word.slice(0, rj); }
+        if (rj === 0) { del = false; ri = (ri + 1) % roles.length; delay = 250; }
+      }
+      setTimeout(step, delay);
+    };
+    setTimeout(step, 1800);
+  }
+
+  /* marquee loop */
+  var mtrack = document.getElementById('mtrack');
+  if (!reduce) {
+    Array.prototype.slice.call(mtrack.children).forEach(function (n) {
+      var c = n.cloneNode(true); c.setAttribute('aria-hidden', 'true'); mtrack.appendChild(c);
+    });
+  }
+
+  /* reveal on scroll, count-up, bars */
+  function countUp(el) {
+    var to = parseFloat(el.getAttribute('data-to')), dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+    var start = null, dur = 1400;
+    function f(ts) {
+      if (start === null) start = ts;
+      var t = Math.min(1, (ts - start) / dur), e = 1 - Math.pow(1 - t, 3);
+      el.textContent = (to * e).toFixed(dec);
+      if (t < 1) requestAnimationFrame(f);
+    }
+    requestAnimationFrame(f);
+  }
+  if (hasIO && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.remove('pre');
+        io.unobserve(el);
+        el.querySelectorAll('.barfill.pre').forEach(function (b) { requestAnimationFrame(function () { b.classList.remove('pre'); }); });
+        el.querySelectorAll('.count').forEach(countUp);
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.barfill').forEach(function (b) { b.classList.add('pre'); });
+    document.querySelectorAll('.rv').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top > window.innerHeight * 0.9) el.classList.add('pre');
+      io.observe(el);
+    });
+  }
+
+  /* tilt and spotlight */
+  document.querySelectorAll('.card').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var r = el.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      el.style.setProperty('--mx', (px * 100) + '%');
+      el.style.setProperty('--my', (py * 100) + '%');
+      if (el.classList.contains('tilt') && !reduce) {
+        el.style.setProperty('--rx', ((0.5 - py) * 8) + 'deg');
+        el.style.setProperty('--ry', ((px - 0.5) * 8) + 'deg');
+      }
+    });
+    el.addEventListener('pointerleave', function () {
+      el.style.setProperty('--rx', '0deg');
+      el.style.setProperty('--ry', '0deg');
+    });
+  });
+
+  /* active nav link */
+  if (hasIO) {
+    var links = {};
+    document.querySelectorAll('.links a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && links[en.target.id]) {
+          Object.keys(links).forEach(function (k) { links[k].removeAttribute('aria-current'); });
+          links[en.target.id].setAttribute('aria-current', 'true');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    ['about', 'skills', 'education', 'project', 'certifications', 'contact'].forEach(function (id) {
+      var s = document.getElementById(id); if (s) navIO.observe(s);
+    });
+  }
+
+  /* distribution plot */
+  var cv = document.getElementById('plot');
+  var ctx = cv.getContext('2d');
+  var muRange = document.getElementById('muRange');
+  var sigmaRange = document.getElementById('sigmaRange');
+  var readout = document.getElementById('readout');
+  var tgt = { mu: 0, s: 1 }, cur = { mu: 0, s: 1 };
+  var dpr = 1, raf = 0, YMAX = 0.7;
+
+  function pdf(x, m, s) { return Math.exp(-0.5 * Math.pow((x - m) / s, 2)) / (s * Math.sqrt(2 * Math.PI)); }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function resize() {
+    dpr = window.devicePixelRatio || 1;
+    cv.width = Math.round(cv.clientWidth * dpr);
+    cv.height = Math.round(cv.clientHeight * dpr);
+    draw();
+  }
+
+  function draw() {
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (!w || !h) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var css = getComputedStyle(root);
+    var col = function (n) { return css.getPropertyValue(n).trim(); };
+    var L = 6, R = 6, T = 24, B = 24;
+    var pw = w - L - R, ph = h - T - B;
+    var X = function (x) { return L + (x + 5) / 10 * pw; };
+    var Y = function (y) { return T + ph - (y / YMAX) * ph; };
+    var mu = cur.mu, s = cur.s, i, x;
+
+    ctx.lineWidth = 1; ctx.strokeStyle = col('--line');
+    ctx.beginPath();
+    for (i = -5; i <= 5; i++) { ctx.moveTo(X(i) + .5, T); ctx.lineTo(X(i) + .5, Y(0)); }
+    [0.2, 0.4, 0.6].forEach(function (g) { ctx.moveTo(L, Y(g) + .5); ctx.lineTo(w - R, Y(g) + .5); });
+    ctx.stroke();
+
+    ctx.strokeStyle = col('--muted');
+    ctx.beginPath(); ctx.moveTo(L, Y(0) + .5); ctx.lineTo(w - R, Y(0) + .5); ctx.stroke();
+
+    ctx.fillStyle = col('--muted');
+    ctx.font = '400 11px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    for (i = -4; i <= 4; i++) ctx.fillText(i < 0 ? '−' + Math.abs(i) : String(i), X(i), Y(0) + 7);
+
+    var grad = ctx.createLinearGradient(L, 0, w - R, 0);
+    grad.addColorStop(0, col('--c1')); grad.addColorStop(1, col('--c2'));
+
+    ctx.globalAlpha = 0.3; ctx.fillStyle = grad;
+    ctx.beginPath(); ctx.moveTo(X(mu - s), Y(0));
+    for (x = mu - s; x <= mu + s + 0.0001; x += 0.02) ctx.lineTo(X(x), Y(pdf(x, mu, s)));
+    ctx.lineTo(X(mu + s), Y(0)); ctx.closePath(); ctx.fill();
+    ctx.globalAlpha = 1;
+
+    ctx.strokeStyle = grad; ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.beginPath();
+    for (x = -5; x <= 5.0001; x += 0.05) {
+      var px = X(x), py = Y(pdf(x, mu, s));
+      if (x === -5) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.strokeStyle = col('--c4');
+    ctx.beginPath(); ctx.moveTo(X(mu), Y(0)); ctx.lineTo(X(mu), Y(pdf(mu, mu, s))); ctx.stroke();
+    ctx.setLineDash([]);
+
+    var yb = Y(pdf(mu + s, mu, s));
+    ctx.strokeStyle = col('--ink'); ctx.lineWidth = 1.75;
+    ctx.beginPath();
+    ctx.moveTo(X(mu), yb); ctx.lineTo(X(mu + s), yb);
+    ctx.moveTo(X(mu + s), yb - 4); ctx.lineTo(X(mu + s), yb + 4);
+    ctx.stroke();
+
+    ctx.fillStyle = col('--ink');
+    ctx.font = '700 13px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.fillText('σ', X(mu + s / 2), yb - 4);
+    ctx.fillStyle = col('--c4');
+    ctx.fillText('μ', X(mu), Y(pdf(mu, mu, s)) - 6);
+  }
+
+  function tick() {
+    var k = reduce ? 1 : 0.2;
+    cur.mu += (tgt.mu - cur.mu) * k;
+    cur.s += (tgt.s - cur.s) * k;
+    if (Math.abs(tgt.mu - cur.mu) < 0.001 && Math.abs(tgt.s - cur.s) < 0.001) { cur.mu = tgt.mu; cur.s = tgt.s; raf = 0; draw(); return; }
+    draw();
+    raf = requestAnimationFrame(tick);
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(tick); }
+
+  function setTarget(mu, s) {
+    tgt.mu = clamp(mu, -2, 2);
+    tgt.s = clamp(s, 0.6, 1.5);
+    muRange.value = tgt.mu;
+    sigmaRange.value = tgt.s;
+    readout.innerHTML = 'μ = ' + tgt.mu.toFixed(2) + ' &nbsp; σ = ' + tgt.s.toFixed(2);
+    kick();
+  }
+  function fromPointer(e) {
+    var r = cv.getBoundingClientRect();
+    var fx = clamp((e.clientX - r.left) / r.width, 0, 1);
+    var fy = clamp((e.clientY - r.top) / r.height, 0, 1);
+    setTarget(-2 + 4 * fx, 0.6 + 0.9 * fy);
+  }
+  cv.addEventListener('pointermove', fromPointer);
+  cv.addEventListener('pointerdown', fromPointer);
+  muRange.addEventListener('input', function () { setTarget(parseFloat(muRange.value), tgt.s); });
+  sigmaRange.addEventListener('input', function () { setTarget(tgt.mu, parseFloat(sigmaRange.value)); });
+  document.getElementById('resetPlot').addEventListener('click', function () { setTarget(0, 1); });
+
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(cv); else window.addEventListener('resize', resize);
+  new MutationObserver(function () { syncToggle(); draw(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq.addEventListener) mq.addEventListener('change', function () { syncToggle(); draw(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  resize();
+
+  /* copy button */
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.getAttribute('data-copy'));
+      var text = target.textContent.trim();
+      var orig = btn.textContent;
+      function selectText() {
+        var rng = document.createRange(); rng.selectNodeContents(target);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(rng);
+        btn.textContent = 'Selected';
+      }
+      try {
+        navigator.clipboard.writeText(text).then(function () { btn.textContent = 'Copied'; }, selectText);
+      } catch (e) { selectText(); }
+      setTimeout(function () { btn.textContent = orig; }, 1800);
+    });
+  });
+})();
+</script>
+
+</body></html>
