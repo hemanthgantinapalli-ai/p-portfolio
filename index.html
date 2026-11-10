@@ -270,6 +270,15 @@ p { margin: 0; }
 .ends { display: flex; justify-content: space-between; margin-top: .35rem; font: 400 .68rem/1 var(--font-mono); color: var(--muted); }
 
 /* project */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 1rem; }
+.project-card { padding: 1.4rem; display: grid; gap: 1rem; align-content: start; }
+.project-card .project-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 16px; color: #fff; background: linear-gradient(135deg, var(--h), var(--h2)); box-shadow: 0 10px 20px -10px var(--h); }
+.project-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.project-card h3 { font-size: 1.25rem; }
+.project-card p { color: var(--muted); font-size: .96rem; }
+.project-card .tags { margin-top: 0; }
+.project-subtitle { margin: 0 0 1rem; color: var(--muted); font-size: .96rem; }
+.project-feature { margin-top: 2rem; }
 .feature {
   border: 1px solid transparent; border-radius: 28px; padding: clamp(1.4rem, 4vw, 2.5rem); box-shadow: var(--shadow);
   background: linear-gradient(var(--card-solid), var(--card-solid)) padding-box, var(--g-loop) border-box; background-size: 100% 100%, 200% auto;
@@ -475,9 +484,28 @@ footer p { text-align: left; font: 400 .8rem/1.5 var(--font-mono); color: var(--
 
   <section class="sec" id="project" aria-labelledby="proj-h">
     <div class="wrap">
-      <span class="eyebrow">Project</span>
-      <h2 id="proj-h">Community Service <span class="grad">Project</span></h2>
-      <div class="sec-body">
+      <span class="eyebrow">Projects</span>
+      <h2 id="proj-h">Things I've <span class="grad">built</span></h2>
+      <div class="sec-body project-grid">
+        <article class="card project-card rv tilt" style="--h:var(--c1);--h2:var(--c2)">
+          <span class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 21h8M12 19v2M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+          <h3>Personal Portfolio</h3>
+          <p>A responsive portfolio website that introduces me, highlights my skills and education, and presents my projects and contact information.</p>
+          <ul class="tags" aria-label="Technologies used">
+            <li style="--h:var(--c1)">HTML</li><li style="--h:var(--c2)">CSS</li><li style="--h:var(--c4)">JavaScript</li>
+          </ul>
+        </article>
+        <article class="card project-card rv tilt" style="--h:var(--c4);--h2:var(--c5);--d:.08s">
+          <span class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 9h16M8 13h.01M12 13h4M8 17h.01M12 17h4"/></svg></span>
+          <h3>To-do List App</h3>
+          <p>A simple task organizer for adding to-dos, marking tasks complete, and removing tasks as work gets done.</p>
+          <ul class="tags" aria-label="Technologies used">
+            <li style="--h:var(--c1)">HTML</li><li style="--h:var(--c2)">CSS</li><li style="--h:var(--c4)">JavaScript</li>
+          </ul>
+        </article>
+      </div>
+      <div class="sec-body project-feature">
+        <p class="project-subtitle">Community service project</p>
         <div class="feature rv">
           <div class="head">
             <div>
